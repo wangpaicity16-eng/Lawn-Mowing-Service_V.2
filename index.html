@@ -360,7 +360,7 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
     </div>
     <div class="nav-group">
       <div class="nav-group-label">จัดการ</div>
-      <div class="nav-item" onclick="switchPage('teachers')"><div class="nav-icon"><i class="fas fa-users"></i></div><span>ข้อมูลครู</span></div>
+      <div class="nav-item" onclick="switchPage('teachers')"><div class="nav-icon"><i class="fas fa-users"></i></div><span>ข้อมูลถนน</span></div>
       <div class="nav-item" onclick="switchPage('addschedule')"><div class="nav-icon"><i class="fas fa-calendar-plus"></i></div><span>เพิ่มตารางเวร</span></div>
       <div class="nav-item" onclick="switchPage('settings')"><div class="nav-icon"><i class="fas fa-cog"></i></div><span>ตั้งค่าระบบ</span></div>
     </div>
@@ -457,8 +457,8 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
         <input type="hidden" id="ciLat"><input type="hidden" id="ciLng">
         <input type="hidden" id="ciPhotoBase64">
         <div class="form-grid form-grid-2">
-          <div class="form-group"><label class="form-label"><i class="fas fa-id-card"></i> รหัสครู</label><input class="form-control" id="ciTeacherId" placeholder="เช่น T001" required></div>
-          <div class="form-group"><label class="form-label"><i class="fas fa-user"></i> ชื่อ-นามสกุล</label><input class="form-control" id="ciTeacherName" placeholder="ชื่อเต็ม" required></div>
+          <div class="form-group"><label class="form-label"><i class="fas fa-id-card"></i> รหัสถนน</label><input class="form-control" id="ciTeacherId" placeholder="เช่น T001" required></div>
+          <div class="form-group"><label class="form-label"><i class="fas fa-user"></i> ชื่อถนน</label><input class="form-control" id="ciTeacherName" placeholder="ชื่อเต็ม" required></div>
         </div>
         <div class="form-grid form-grid-2">
           <div class="form-group"><label class="form-label"><i class="fas fa-briefcase"></i> ตำแหน่ง</label>
@@ -508,7 +508,7 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
       <div class="glass" style="border-left:4px solid var(--orange)">
         <div class="glass-header"><div class="glass-title"><div class="icon-box g3"><i class="fas fa-sign-out-alt"></i></div> บันทึกออกเวร</div></div>
         <div class="form-grid" style="gap:14px">
-          <div class="form-group"><label class="form-label"><i class="fas fa-id-card"></i> รหัสครู</label><input class="form-control" id="coTeacherId" placeholder="รหัสครูที่ต้องการออกเวร"></div>
+          <div class="form-group"><label class="form-label"><i class="fas fa-id-card"></i> รหัสถนน</label><input class="form-control" id="coTeacherId" placeholder="รหัสถนนที่ต้องการออกเวร"></div>
           <div class="form-group"><label class="form-label"><i class="fas fa-sticky-note"></i> หมายเหตุ</label><textarea class="form-control" id="coNotes" rows="2"></textarea></div>
           <button class="btn btn-warning" onclick="handleCheckOut()" style="width:100%"><i class="fas fa-sign-out-alt"></i> บันทึกออกเวร</button>
         </div>
@@ -569,7 +569,7 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
   </div>
   <div class="glass">
     <div style="overflow-x:auto"><table class="data-table">
-      <thead><tr><th>วันที่</th><th>วัน</th><th>รหัสครู</th><th>ชื่อครู</th><th>ประเภทเวร</th><th>สถานที่</th><th>เวลา</th><th>สถานะ</th><th>จัดการ</th></tr></thead>
+      <thead><tr><th>วันที่</th><th>วัน</th><th>รหัสถนน</th><th>ชื่อครู</th><th>ประเภทเวร</th><th>สถานที่</th><th>เวลา</th><th>สถานะ</th><th>จัดการ</th></tr></thead>
       <tbody id="scheduleTableBody"></tbody>
     </table></div>
     <div id="noScheduleData" style="text-align:center;padding:40px;color:var(--gray-400)"><i class="fas fa-calendar-times" style="font-size:40px;margin-bottom:10px;display:block;opacity:.4"></i><p>ยังไม่มีตารางเวร</p></div>
@@ -613,7 +613,7 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
   <div class="glass">
     <div class="glass-header"><div class="glass-title"><div class="icon-box g2"><i class="fas fa-table"></i></div> ตารางสถิติรายครู</div></div>
     <div style="overflow-x:auto"><table class="data-table">
-      <thead><tr><th>อันดับ</th><th>รหัสครู</th><th>ชื่อ-นามสกุล</th><th>เข้าเวรทั้งหมด</th><th>ออกเวรครบ</th><th>อัตราการเข้าเวร</th></tr></thead>
+      <thead><tr><th>อันดับ</th><th>รหัสถนน</th><th>ชื่อถนน</th><th>เข้าเวรทั้งหมด</th><th>ออกเวรครบ</th><th>อัตราการเข้าเวร</th></tr></thead>
       <tbody id="statsTableBody"></tbody>
     </table></div>
   </div>
@@ -658,17 +658,17 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
 <!-- TEACHERS -->
 <div class="page" id="page-teachers">
   <div class="page-header">
-    <div class="page-title"><div class="page-title-icon g1"><i class="fas fa-users"></i></div><div><h2>ข้อมูลครู</h2></div></div>
+    <div class="page-title"><div class="page-title-icon g1"><i class="fas fa-users"></i></div><div><h2>ข้อมูลถนน</h2></div></div>
     <button class="btn btn-primary" onclick="showAddTeacherForm()"><i class="fas fa-user-plus"></i> เพิ่มครู</button>
   </div>
   <div class="glass" id="addTeacherForm" style="display:none;border-left:4px solid var(--teal)">
     <div class="glass-header">
-      <div class="glass-title"><div class="icon-box g1"><i class="fas fa-user-plus"></i></div> เพิ่มข้อมูลครู</div>
+      <div class="glass-title"><div class="icon-box g1"><i class="fas fa-user-plus"></i></div> เพิ่มข้อมูลถนน</div>
       <button class="btn btn-sm" style="background:#eee;color:#666" onclick="hideAddTeacherForm()"><i class="fas fa-times"></i></button>
     </div>
     <div class="form-grid form-grid-3" style="gap:14px">
-      <div class="form-group"><label class="form-label">รหัสครู</label><input class="form-control" id="tId" placeholder="T001"></div>
-      <div class="form-group"><label class="form-label">ชื่อ-นามสกุล</label><input class="form-control" id="tName" placeholder="ชื่อเต็ม"></div>
+      <div class="form-group"><label class="form-label">รหัสถนน</label><input class="form-control" id="tId" placeholder="T001"></div>
+      <div class="form-group"><label class="form-label">ชื่อถนน</label><input class="form-control" id="tName" placeholder="ชื่อเต็ม"></div>
       <div class="form-group"><label class="form-label">ตำแหน่ง</label><input class="form-control" id="tPosition" placeholder="ครู/บุคลากร"></div>
       <div class="form-group"><label class="form-label">วิชาเอก</label><input class="form-control" id="tSubject"></div>
       <div class="form-group"><label class="form-label">โทรศัพท์</label><input class="form-control" id="tPhone" placeholder="08xxxxxxxx"></div>
@@ -680,10 +680,10 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
   </div>
   <div class="glass">
     <div style="overflow-x:auto"><table class="data-table">
-      <thead><tr><th>รหัส</th><th>ชื่อ-นามสกุล</th><th>ตำแหน่ง</th><th>วิชาเอก</th><th>โทรศัพท์</th><th>สถานะ</th></tr></thead>
+      <thead><tr><th>รหัส</th><th>ชื่อถนน</th><th>ตำแหน่ง</th><th>วิชาเอก</th><th>โทรศัพท์</th><th>สถานะ</th></tr></thead>
       <tbody id="teachersTableBody"></tbody>
     </table></div>
-    <div id="noTeachersData" style="text-align:center;padding:40px;color:var(--gray-400)"><i class="fas fa-user-slash" style="font-size:40px;margin-bottom:10px;display:block;opacity:.4"></i><p>ยังไม่มีข้อมูลครู</p></div>
+    <div id="noTeachersData" style="text-align:center;padding:40px;color:var(--gray-400)"><i class="fas fa-user-slash" style="font-size:40px;margin-bottom:10px;display:block;opacity:.4"></i><p>ยังไม่มีข้อมูลถนน</p></div>
   </div>
 </div>
 
@@ -703,8 +703,8 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
           </div>
         </div>
         <div class="form-grid form-grid-2">
-          <div class="form-group"><label class="form-label">รหัสครู</label><input class="form-control" id="scTeacherId" placeholder="T001"></div>
-          <div class="form-group"><label class="form-label">ชื่อครู</label><input class="form-control" id="scTeacherName" placeholder="ชื่อ-นามสกุล"></div>
+          <div class="form-group"><label class="form-label">รหัสถนน</label><input class="form-control" id="scTeacherId" placeholder="T001"></div>
+          <div class="form-group"><label class="form-label">ชื่อครู</label><input class="form-control" id="scTeacherName" placeholder="ชื่อถนน"></div>
         </div>
         <div class="form-group"><label class="form-label">สถานที่เวร</label>
           <select class="form-control" id="scLocation"><option>หน้าโรงเรียน</option><option>ประตูหลัง</option><option>อาคาร 1</option><option>อาคาร 2</option><option>โรงอาหาร</option></select>
@@ -737,7 +737,7 @@ main{flex:1;overflow-y:auto;padding:28px;background:var(--yellow-bg)}
           </div>
         </div>
         <div class="form-grid form-grid-2">
-          <div class="form-group"><label class="form-label">รหัสครู</label><input class="form-control" id="scRangeTeacherId" placeholder="T001"></div>
+          <div class="form-group"><label class="form-label">รหัสถนน</label><input class="form-control" id="scRangeTeacherId" placeholder="T001"></div>
           <div class="form-group"><label class="form-label">ชื่อครู</label><input class="form-control" id="scRangeTeacherName"></div>
         </div>
         <div class="form-group"><label class="form-label">ประเภทเวร</label>
@@ -1286,7 +1286,7 @@ async function handleCheckIn(e) {
 
 async function handleCheckOut() {
   const id = document.getElementById('coTeacherId').value.trim();
-  if (!id) { toast('กรุณากรอกรหัสครู', 'error'); return; }
+  if (!id) { toast('กรุณากรอกรหัสถนน', 'error'); return; }
   showLoading('กำลังบันทึกออกเวร...');
   const res = await api({ action: 'checkOut', teacherId: id, notes: document.getElementById('coNotes').value });
   hideLoading();
@@ -1373,7 +1373,7 @@ function renderScheduleTable(data) {
   noData.style.display = 'none';
   tbody.innerHTML = data.map(r => `<tr>
     <td>${formatDate(r['วันที่'])}</td><td>${r['วันในสัปดาห์']||'-'}</td>
-    <td><span class="badge badge-gray">${r['รหัสครู']||'-'}</span></td>
+    <td><span class="badge badge-gray">${r['รหัสถนน']||'-'}</span></td>
     <td><b>${r['ชื่อครู']||'-'}</b></td><td>${r['ประเภทเวร']||'-'}</td>
     <td>${r['สถานที่เวร']||'-'}</td>
     <td>${formatTime(r['เวลาเริ่ม'])} – ${formatTime(r['เวลาสิ้นสุด'])}</td>
@@ -1441,7 +1441,7 @@ function renderLogsTable(data) {
   noData.style.display = 'none';
   tbody.innerHTML = data.map(r => `<tr>
     <td>${formatDate(r['วันที่'])}</td><td>${r['วันในสัปดาห์']||'-'}</td>
-    <td><b>${r['ชื่อครู']||'-'}</b><br><small style="color:var(--gray-400)">${r['รหัสครู']||''}</small></td>
+    <td><b>${r['ชื่อครู']||'-'}</b><br><small style="color:var(--gray-400)">${r['รหัสถนน']||''}</small></td>
     <td>${r['ตำแหน่ง']||'-'}</td><td>${r['ประเภทเวร']||'-'}</td>
     <td style="color:#43A047;font-weight:600">${formatTime(r['เวลาเข้าเวร'])}</td>
     <td style="color:#E53935;font-weight:600">${formatTime(r['เวลาออกเวร'])}</td>
@@ -1506,8 +1506,8 @@ async function loadTeachers() {
   if (!allTeachers.length) { tbody.innerHTML = ''; noData.style.display = 'block'; return; }
   noData.style.display = 'none';
   tbody.innerHTML = allTeachers.map(t => `<tr>
-    <td><span class="badge badge-gray">${t['รหัสครู']||'-'}</span></td>
-    <td><b>${t['ชื่อ-นามสกุล']||'-'}</b></td><td>${t['ตำแหน่ง']||'-'}</td>
+    <td><span class="badge badge-gray">${t['รหัสถนน']||'-'}</span></td>
+    <td><b>${t['ชื่อถนน']||'-'}</b></td><td>${t['ตำแหน่ง']||'-'}</td>
     <td>${t['วิชาเอก']||'-'}</td><td>${t['โทรศัพท์']||'-'}</td>
     <td>${t['สถานะ']==='ปกติ'?'<span class="badge badge-success">ปกติ</span>':`<span class="badge badge-danger">${t['สถานะ']}</span>`}</td>
   </tr>`).join('');
@@ -1516,9 +1516,9 @@ function showAddTeacherForm() { document.getElementById('addTeacherForm').style.
 function hideAddTeacherForm() { document.getElementById('addTeacherForm').style.display = 'none'; }
 async function saveTeacher() {
   const id = document.getElementById('tId').value.trim(), name = document.getElementById('tName').value.trim();
-  if (!id) { toast('กรุณากรอกรหัสครู', 'error'); return; }
-  if (!name) { toast('กรุณากรอกชื่อ-นามสกุล', 'error'); return; }
-  showLoading('กำลังบันทึกข้อมูลครู...');
+  if (!id) { toast('กรุณากรอกรหัสถนน', 'error'); return; }
+  if (!name) { toast('กรุณากรอกชื่อถนน', 'error'); return; }
+  showLoading('กำลังบันทึกข้อมูลถนน...');
   const res = await api({ action: 'addTeacher', teacherId: id, name,
     position: document.getElementById('tPosition').value, subject: document.getElementById('tSubject').value,
     phone: document.getElementById('tPhone').value, email: document.getElementById('tEmail').value,
